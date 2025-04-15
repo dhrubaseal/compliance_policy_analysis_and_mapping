@@ -1,17 +1,39 @@
 from typing import Dict, List, Optional
+from langchain_openai import OpenAIEmbeddings
 from langchain_community.vectorstores import Chroma
-from langchain_community.embeddings import OpenAIEmbeddings
+from dotenv import load_dotenv
+import chromadb
+from chromadb.config import Settings
 import json
 import os
+
+load_dotenv()  # Load environment variables from .env file
 
 class ComplianceMapper:
     def __init__(self, collection_name: str = "iso27001_2022"):
         """Initialize the compliance mapper with a specific collection"""
+        # Get OpenAI API key from environment variable
+        openai_api_key = os.getenv("OPENAI_API_KEY")
+        if not openai_api_key:
+            raise ValueError("OPENAI_API_KEY environment variable is not set")
+            
         self.embeddings = OpenAIEmbeddings()
+        
+        # Initialize ChromaDB with explicit settings
+        client = chromadb.PersistentClient(
+            path="./chroma_db",
+            settings=Settings(
+                anonymized_telemetry=False,
+                is_persistent=True
+            )
+        )
+        
+        # Initialize Chroma collection
         self.db = Chroma(
-            persist_directory="./chroma_db",
+            client=client,
+            collection_name=collection_name,
             embedding_function=self.embeddings,
-            collection_name=collection_name
+            persist_directory="./chroma_db"
         )
         self.control_mappings = {}
         self.requirement_cache = {}

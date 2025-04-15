@@ -1,16 +1,19 @@
 import os
+import shutil
 from dotenv import load_dotenv
-from langchain.document_loaders import PyPDFLoader
+from langchain_community.document_loaders import PyPDFLoader
 from langchain.text_splitter import RecursiveCharacterTextSplitter
 from langchain_openai import OpenAIEmbeddings
-from langchain_community.vectorstores import Chroma
-import chromadb
-from chromadb.config import Settings
+from langchain_chroma import Chroma
 
 # Load environment variables
 load_dotenv()
 
 def process_pdf_to_embeddings(pdf_path: str, collection_name: str):
+    # Clean up existing ChromaDB files if they exist
+    if os.path.exists("./chroma_db"):
+        shutil.rmtree("./chroma_db")
+    
     # Load and split the PDF
     loader = PyPDFLoader(pdf_path)
     pages = loader.load()
@@ -26,31 +29,19 @@ def process_pdf_to_embeddings(pdf_path: str, collection_name: str):
     # Initialize OpenAI embeddings
     embeddings = OpenAIEmbeddings()
     
-    # Initialize ChromaDB with explicit settings
-    client = chromadb.PersistentClient(
-        path="./chroma_db",
-        settings=Settings(
-            anonymized_telemetry=False,
-            is_persistent=True
-        )
-    )
-    
-    # Create and persist a Chroma vector store
+    # Create vector store with minimal configuration
     db = Chroma.from_documents(
         documents=splits,
         embedding=embeddings,
         persist_directory="./chroma_db",
-        collection_name=collection_name,
-        client=client
+        collection_name=collection_name
     )
     
-    # Persist the database
-    db.persist()
     return db
 
 if __name__ == "__main__":
     # Process the ISO 27001:2022 PDF
-    pdf_path = "C:\my_projects\compliance_policy_analysis_and_mapping\ISO_27001_2022_ISMS.pdf"
+    pdf_path = "ISO_27001_2022_ISMS.pdf"
     collection_name = "iso27001_2022"
     
     if not os.path.exists(pdf_path):

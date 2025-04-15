@@ -1,6 +1,6 @@
 from typing import Dict, List, Optional
 from langchain_openai import OpenAIEmbeddings
-from langchain_community.vectorstores import Chroma
+from langchain_chroma import Chroma
 from dotenv import load_dotenv
 import chromadb
 from chromadb.config import Settings
@@ -138,11 +138,11 @@ class ComplianceMapper:
 
     def save_analysis(self, filename: str, analysis_data: Dict[str, any]):
         """Save the analysis results to a file"""
-        with open(filename, 'w') as f:
+        with open(filename, 'w', encoding='utf-8') as f:
             json.dump(analysis_data, f, indent=2)
 
     def load_analysis(self, filename: str) -> Dict[str, any]:
         """Load previous analysis results"""
         if os.path.exists(filename):
-            with open(filename, 'r') as f:
+            with open(filename, 'r', encoding='utf-8') as f:
                 return json.load(f)

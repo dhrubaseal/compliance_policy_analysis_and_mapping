@@ -46,7 +46,7 @@ if uploaded_file is not None:
     mapper.save_analysis('compliance_analysis.json', analysis_results)
     
     # Load the analysis data
-    with open('compliance_analysis.json', 'r') as f:
+    with open('compliance_analysis.json', 'r', encoding='utf-8') as f:
         analysis_data = json.load(f)
         
     # Sidebar with section selection

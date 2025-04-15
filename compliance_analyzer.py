@@ -4,9 +4,9 @@ import json
 from typing import Dict, List
 from datetime import datetime
 
-def load_existing_controls(csv_file: str) -> List[Dict[str, str]]:
+def load_existing_controls(file_input) -> List[Dict[str, str]]:
     """Load existing security controls from the CSV file"""
-    validator = PolicyValidator(csv_file)
+    validator = PolicyValidator(file_input)
     validator.load_and_validate()
     
     controls = []

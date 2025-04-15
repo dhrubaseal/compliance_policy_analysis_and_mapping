@@ -94,11 +94,11 @@ Contributions are welcome! Please feel free to submit pull requests.
 
 ## License
 
-[Add appropriate license information]
+This project is licensed under the MIT License - see the LICENSE file for details.
 
-## Authors
+## Author
 
-[Add author information]
+Dhruba Jyoti Seal
 
 ## Acknowledgments
 

@@ -1,15 +1,33 @@
 from compliance_mapper import ComplianceMapper
 from policy_validator import PolicyValidator
+from document_processor import DocumentProcessor
 import json
 from typing import Dict, List
 from datetime import datetime
 import os
 
 def load_existing_controls(file_input: str) -> List[Dict[str, str]]:
-    """Load existing security controls from the CSV file"""
+    """Load existing security controls from various file formats"""
+    if not os.path.exists(file_input):
+        raise FileNotFoundError(f"Input file not found: {file_input}")
+        
+    # Initialize policy validator
     validator = PolicyValidator(file_input)
     validator.load_and_validate()
-    return validator.policies
+    
+    if validator.errors:
+        print("\nValidation Errors:")
+        for error in validator.errors:
+            formatted_errors = []
+            for err in error['errors']:
+                if isinstance(err, dict):
+                    formatted_errors.append(f"{err['field']}: {err['error']} (Suggestion: {err['suggestion']})")
+                else:
+                    formatted_errors.append(str(err))
+            print(f"Row {error['row']} ({error['policy_name']}): {', '.join(formatted_errors)}")
+        
+    # Return validated policies
+    return validator.policies if not validator.errors else []
 
 def analyze_section(mapper: ComplianceMapper, section: str, controls: List[Dict[str, str]]) -> Dict[str, any]:
     """Analyze a specific section of ISO 27001:2022"""

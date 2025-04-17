@@ -1,7 +1,7 @@
 {
   "4 Context of the organization": {
     "section": "4 Context of the organization",
-    "timestamp": "2025-04-16T01:32:35.621037",
+    "timestamp": "2025-04-17T11:41:50.414123",
     "requirements": [
       {
         "section": "4 Context of the organization",
@@ -108,7 +108,7 @@
               "name": "",
               "content": "",
               "type": "",
-              "version": "1.6",
+              "version": "1.5",
               "status": ""
             },
             "relevance": 0.9748132139173904,
@@ -140,7 +140,7 @@
               "name": "",
               "content": "",
               "type": "",
-              "version": "1.6",
+              "version": "1.5",
               "status": ""
             },
             "relevance": 0.9746412460195168,
@@ -172,7 +172,7 @@
               "name": "",
               "content": "",
               "type": "",
-              "version": "1.6",
+              "version": "1.5",
               "status": ""
             },
             "relevance": 0.9450770865936188,
@@ -204,7 +204,7 @@
               "name": "",
               "content": "",
               "type": "",
-              "version": "1.6",
+              "version": "1.5",
               "status": ""
             },
             "relevance": 0.9828788892463219,
@@ -236,7 +236,7 @@
               "name": "",
               "content": "",
               "type": "",
-              "version": "1.6",
+              "version": "1.5",
               "status": ""
             },
             "relevance": 0.9654101013816707,
@@ -255,7 +255,7 @@
   },
   "5 Leadership": {
     "section": "5 Leadership",
-    "timestamp": "2025-04-16T01:32:41.170670",
+    "timestamp": "2025-04-17T11:41:56.998329",
     "requirements": [
       {
         "section": "5 Leadership",
@@ -362,7 +362,7 @@
               "name": "",
               "content": "",
               "type": "",
-              "version": "1.6",
+              "version": "1.5",
               "status": ""
             },
             "relevance": 0.9746412460195168,
@@ -394,7 +394,7 @@
               "name": "",
               "content": "",
               "type": "",
-              "version": "1.6",
+              "version": "1.5",
               "status": ""
             },
             "relevance": 0.9748132139173904,
@@ -426,7 +426,7 @@
               "name": "",
               "content": "",
               "type": "",
-              "version": "1.6",
+              "version": "1.5",
               "status": ""
             },
             "relevance": 0.9828788892463219,
@@ -458,7 +458,7 @@
               "name": "",
               "content": "",
               "type": "",
-              "version": "1.6",
+              "version": "1.5",
               "status": ""
             },
             "relevance": 0.9795786145885097,
@@ -490,7 +490,7 @@
               "name": "",
               "content": "",
               "type": "",
-              "version": "1.6",
+              "version": "1.5",
               "status": ""
             },
             "relevance": 0.9654101013816707,
@@ -509,7 +509,7 @@
   },
   "6 Planning": {
     "section": "6 Planning",
-    "timestamp": "2025-04-16T01:32:46.357456",
+    "timestamp": "2025-04-17T11:42:03.095380",
     "requirements": [
       {
         "section": "6 Planning",
@@ -616,14 +616,14 @@
               "name": "",
               "content": "",
               "type": "",
-              "version": "1.6",
+              "version": "1.5",
               "status": ""
             },
-            "relevance": 0.9748220549859178,
+            "relevance": 0.9748132139173904,
             "strength": 0.9568248561153619
           }
         ],
-        "coverage_score": 0.9327339724999822
+        "coverage_score": 0.9327255131458606
       },
       {
         "requirement": {
@@ -648,7 +648,7 @@
               "name": "",
               "content": "",
               "type": "",
-              "version": "1.6",
+              "version": "1.5",
               "status": ""
             },
             "relevance": 0.9746412460195168,
@@ -680,7 +680,7 @@
               "name": "",
               "content": "",
               "type": "",
-              "version": "1.6",
+              "version": "1.5",
               "status": ""
             },
             "relevance": 0.9830457617754341,
@@ -712,7 +712,7 @@
               "name": "",
               "content": "",
               "type": "",
-              "version": "1.6",
+              "version": "1.5",
               "status": ""
             },
             "relevance": 0.9654101013816707,
@@ -744,7 +744,7 @@
               "name": "",
               "content": "",
               "type": "",
-              "version": "1.6",
+              "version": "1.5",
               "status": ""
             },
             "relevance": 0.9645814002057004,
@@ -763,7 +763,7 @@
   },
   "7 Support": {
     "section": "7 Support",
-    "timestamp": "2025-04-16T01:32:56.330841",
+    "timestamp": "2025-04-17T11:42:09.159680",
     "requirements": [
       {
         "section": "7 Support",
@@ -870,7 +870,7 @@
               "name": "",
               "content": "",
               "type": "",
-              "version": "1.6",
+              "version": "1.5",
               "status": ""
             },
             "relevance": 0.9746412460195168,
@@ -902,7 +902,7 @@
               "name": "",
               "content": "",
               "type": "",
-              "version": "1.6",
+              "version": "1.5",
               "status": ""
             },
             "relevance": 0.9748132139173904,
@@ -934,14 +934,14 @@
               "name": "",
               "content": "",
               "type": "",
-              "version": "1.6",
+              "version": "1.5",
               "status": ""
             },
-            "relevance": 0.9654101013816707,
+            "relevance": 0.9653524677337404,
             "strength": 0.9303358138818206
           }
         ],
-        "coverage_score": 0.8981555923986476
+        "coverage_score": 0.8981019737518934
       },
       {
         "requirement": {
@@ -966,7 +966,7 @@
               "name": "",
               "content": "",
               "type": "",
-              "version": "1.6",
+              "version": "1.5",
               "status": ""
             },
             "relevance": 0.9450770865936188,
@@ -998,7 +998,7 @@
               "name": "",
               "content": "",
               "type": "",
-              "version": "1.6",
+              "version": "1.5",
               "status": ""
             },
             "relevance": 0.9645814002057004,
@@ -1017,7 +1017,7 @@
   },
   "8 Operation": {
     "section": "8 Operation",
-    "timestamp": "2025-04-16T01:33:01.573557",
+    "timestamp": "2025-04-17T11:42:14.895578",
     "requirements": [
       {
         "section": "8 Operation",
@@ -1124,14 +1124,14 @@
               "name": "",
               "content": "",
               "type": "",
-              "version": "1.6",
+              "version": "1.5",
               "status": ""
             },
             "relevance": 0.9748132139173904,
-            "strength": 0.9568248561153619
+            "strength": 0.95680182674917
           }
         ],
-        "coverage_score": 0.9327255131458606
+        "coverage_score": 0.9327030638153886
       },
       {
         "requirement": {
@@ -1156,7 +1156,7 @@
               "name": "",
               "content": "",
               "type": "",
-              "version": "1.6",
+              "version": "1.5",
               "status": ""
             },
             "relevance": 0.9654101013816707,
@@ -1188,7 +1188,7 @@
               "name": "",
               "content": "",
               "type": "",
-              "version": "1.6",
+              "version": "1.5",
               "status": ""
             },
             "relevance": 0.9450770865936188,
@@ -1220,7 +1220,7 @@
               "name": "",
               "content": "",
               "type": "",
-              "version": "1.6",
+              "version": "1.5",
               "status": ""
             },
             "relevance": 0.9746412460195168,
@@ -1252,7 +1252,7 @@
               "name": "",
               "content": "",
               "type": "",
-              "version": "1.6",
+              "version": "1.5",
               "status": ""
             },
             "relevance": 0.9645814002057004,
@@ -1271,7 +1271,7 @@
   },
   "9 Performance evaluation": {
     "section": "9 Performance evaluation",
-    "timestamp": "2025-04-16T01:33:09.823860",
+    "timestamp": "2025-04-17T11:42:20.875652",
     "requirements": [
       {
         "section": "9 Performance evaluation",
@@ -1378,14 +1378,14 @@
               "name": "",
               "content": "",
               "type": "",
-              "version": "1.6",
+              "version": "1.5",
               "status": ""
             },
             "relevance": 0.9748132139173904,
-            "strength": 0.9567607477924698
+            "strength": 0.95680182674917
           }
         ],
-        "coverage_score": 0.9326630195055833
+        "coverage_score": 0.9327030638153886
       },
       {
         "requirement": {
@@ -1410,7 +1410,7 @@
               "name": "",
               "content": "",
               "type": "",
-              "version": "1.6",
+              "version": "1.5",
               "status": ""
             },
             "relevance": 0.9746412460195168,
@@ -1442,7 +1442,7 @@
               "name": "",
               "content": "",
               "type": "",
-              "version": "1.6",
+              "version": "1.5",
               "status": ""
             },
             "relevance": 0.9645814002057004,
@@ -1474,7 +1474,7 @@
               "name": "",
               "content": "",
               "type": "",
-              "version": "1.6",
+              "version": "1.5",
               "status": ""
             },
             "relevance": 0.9654101013816707,
@@ -1506,7 +1506,7 @@
               "name": "",
               "content": "",
               "type": "",
-              "version": "1.6",
+              "version": "1.5",
               "status": ""
             },
             "relevance": 0.9800174785463618,
@@ -1525,7 +1525,7 @@
   },
   "10 Improvement": {
     "section": "10 Improvement",
-    "timestamp": "2025-04-16T01:33:20.449408",
+    "timestamp": "2025-04-17T11:42:27.045684",
     "requirements": [
       {
         "section": "10 Improvement",
@@ -1632,7 +1632,7 @@
               "name": "",
               "content": "",
               "type": "",
-              "version": "1.6",
+              "version": "1.5",
               "status": ""
             },
             "relevance": 0.9748132139173904,
@@ -1664,7 +1664,7 @@
               "name": "",
               "content": "",
               "type": "",
-              "version": "1.6",
+              "version": "1.5",
               "status": ""
             },
             "relevance": 0.9800174785463618,
@@ -1696,7 +1696,7 @@
               "name": "",
               "content": "",
               "type": "",
-              "version": "1.6",
+              "version": "1.5",
               "status": ""
             },
             "relevance": 0.9654101013816707,
@@ -1728,7 +1728,7 @@
               "name": "",
               "content": "",
               "type": "",
-              "version": "1.6",
+              "version": "1.5",
               "status": ""
             },
             "relevance": 0.9746412460195168,
@@ -1760,7 +1760,7 @@
               "name": "",
               "content": "",
               "type": "",
-              "version": "1.6",
+              "version": "1.5",
               "status": ""
             },
             "relevance": 0.9694950887061737,

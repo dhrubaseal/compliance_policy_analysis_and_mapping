@@ -1,7 +1,7 @@
 {
   "4 Context of the organization": {
     "section": "4 Context of the organization",
-    "timestamp": "2025-04-17T11:41:50.414123",
+    "timestamp": "2025-04-17T15:16:17.415670",
     "requirements": [
       {
         "section": "4 Context of the organization",
@@ -105,17 +105,17 @@
         "mapped_controls": [
           {
             "control": {
-              "name": "",
+              "name": "Information Security Policy",
               "content": "",
               "type": "",
-              "version": "1.5",
+              "version": "1.0",
               "status": ""
             },
-            "relevance": 0.9748132139173904,
-            "strength": 0.9568248561153619
+            "relevance": 0.9586083463251975,
+            "strength": 0.9494789564627606
           }
         ],
-        "coverage_score": 0.9327255131458606
+        "coverage_score": 0.9101784523253411
       },
       {
         "requirement": {
@@ -137,17 +137,17 @@
         "mapped_controls": [
           {
             "control": {
-              "name": "",
+              "name": "Information Security Policy",
               "content": "",
               "type": "",
-              "version": "1.5",
+              "version": "1.0",
               "status": ""
             },
-            "relevance": 0.9746412460195168,
-            "strength": 0.9585254235275762
+            "relevance": 0.9543928045112506,
+            "strength": 0.9479235097492891
           }
         ],
-        "coverage_score": 0.934218413128302
+        "coverage_score": 0.9046913769317718
       },
       {
         "requirement": {
@@ -169,17 +169,17 @@
         "mapped_controls": [
           {
             "control": {
-              "name": "",
+              "name": "Information Security Policy",
               "content": "",
               "type": "",
-              "version": "1.5",
+              "version": "1.0",
               "status": ""
             },
-            "relevance": 0.9450770865936188,
-            "strength": 0.8782178301671067
+            "relevance": 0.9085980409854052,
+            "strength": 0.8666643188506886
           }
         ],
-        "coverage_score": 0.8299835483288988
+        "coverage_score": 0.7874495022996862
       },
       {
         "requirement": {
@@ -201,17 +201,17 @@
         "mapped_controls": [
           {
             "control": {
-              "name": "",
+              "name": "Information Security Policy",
               "content": "",
               "type": "",
-              "version": "1.5",
+              "version": "1.0",
               "status": ""
             },
-            "relevance": 0.9828788892463219,
-            "strength": 0.974612136396154
+            "relevance": 0.9688925464543103,
+            "strength": 0.9706329607738102
           }
         ],
-        "coverage_score": 0.9579256940670366
+        "coverage_score": 0.9404390410366237
       },
       {
         "requirement": {
@@ -233,29 +233,54 @@
         "mapped_controls": [
           {
             "control": {
-              "name": "",
+              "name": "Information Security Policy",
               "content": "",
               "type": "",
-              "version": "1.5",
+              "version": "1.0",
               "status": ""
             },
-            "relevance": 0.9654101013816707,
-            "strength": 0.9303358138818206
+            "relevance": 0.9530071267090483,
+            "strength": 0.9259962815882805
           }
         ],
-        "coverage_score": 0.8981555923986476
+        "coverage_score": 0.88248105565971
       }
     ],
-    "gaps": [],
+    "gaps": [
+      {
+        "requirement": {
+          "section": "4 Context of the organization",
+          "content": "ISO/IEC 27001:2022(E)\nForeword ........................................................................................................................................................................................................................................iv\nIntroduction .................................................................................................................................................................................................................................v\n1  Scope  .................................................................................................................................................................................................................................1\n2  Normative references  .....................................................................................................................................................................................1",
+          "relevance": 0.8156008700748049,
+          "source": {
+            "creationdate": "2022-11-30T09:16:31+01:00",
+            "creator": "PyPDF",
+            "moddate": "2022-11-30T09:16:31+01:00",
+            "page": 2,
+            "page_label": "3",
+            "producer": "TCPDF 6.2.5 (http://www.tcpdf.org)",
+            "source": "ISO_27001_2022_ISMS.pdf",
+            "total_pages": 26,
+            "trapped": "/False"
+          }
+        },
+        "current_coverage": 0.7874495022996862,
+        "gap_description": "ISO/IEC 27001:2022(E)\nForeword ........................................................................................................................................................................................................................................iv\nIntroduction .................................................................................................................................................................................................................................v\n1  Scope  .................................................................................................................................................................................................................................1\n2  Normative references  .....................................................................................................................................................................................1",
+        "suggested_improvements": [
+          "ISO/IEC 27001:2022(E)\nForeword ........................................................................................................................................................................................................................................iv\nIntroduction .................................................................................................................................................................................................................................v\n1  Scope  .................................................................................................................................................................................................................................1\n2  Normative references  .....................................................................................................................................................................................1",
+          "INTERNATIONAL ST ANDARD ISO/IEC 27001:2022(E)\nInformation security, cybersecurity and privacy \nprotection \u2014 Information security management systems \n\u2014 Requirements\n1  Scope\nThis document specifies the requirements for establishing, implementing, maintaining and continually \nimproving an information security management system within th e context of the organization. This \ndocument also includes requirements for the assessment and treatment of information security risks \ntailored to the needs of the organization. The requirements s et out in this document are generic and are \nintended to be applicable to all organizations, regardless o f type, size or nature. Excluding any of the \nrequirements specified in \nClauses \u0376 to 10 is not acceptable when an organization claims conformity to \nthis document.\n2  Normative references\nThe following documents are referred to in the text in such a way that some or all of their content"
+        ]
+      }
+    ],
     "summary": {
       "total_requirements": 5,
       "mapped_requirements": 5,
-      "gaps_identified": 0
+      "gaps_identified": 1
     }
   },
   "5 Leadership": {
     "section": "5 Leadership",
-    "timestamp": "2025-04-17T11:41:56.998329",
+    "timestamp": "2025-04-17T15:16:24.181082",
     "requirements": [
       {
         "section": "5 Leadership",
@@ -359,17 +384,17 @@
         "mapped_controls": [
           {
             "control": {
-              "name": "",
+              "name": "Information Security Policy",
               "content": "",
               "type": "",
-              "version": "1.5",
+              "version": "1.0",
               "status": ""
             },
-            "relevance": 0.9746412460195168,
-            "strength": 0.9585254235275762
+            "relevance": 0.9543928045112506,
+            "strength": 0.9479235097492891
           }
         ],
-        "coverage_score": 0.934218413128302
+        "coverage_score": 0.9046913769317718
       },
       {
         "requirement": {
@@ -391,17 +416,17 @@
         "mapped_controls": [
           {
             "control": {
-              "name": "",
+              "name": "Information Security Policy",
               "content": "",
               "type": "",
-              "version": "1.5",
+              "version": "1.0",
               "status": ""
             },
-            "relevance": 0.9748132139173904,
-            "strength": 0.9568248561153619
+            "relevance": 0.9586083463251975,
+            "strength": 0.9494789564627606
           }
         ],
-        "coverage_score": 0.9327255131458606
+        "coverage_score": 0.9101784523253411
       },
       {
         "requirement": {
@@ -423,17 +448,17 @@
         "mapped_controls": [
           {
             "control": {
-              "name": "",
+              "name": "Information Security Policy",
               "content": "",
               "type": "",
-              "version": "1.5",
+              "version": "1.0",
               "status": ""
             },
-            "relevance": 0.9828788892463219,
-            "strength": 0.974612136396154
+            "relevance": 0.9688925464543103,
+            "strength": 0.9706329607738102
           }
         ],
-        "coverage_score": 0.9579256940670366
+        "coverage_score": 0.9404390410366237
       },
       {
         "requirement": {
@@ -455,17 +480,17 @@
         "mapped_controls": [
           {
             "control": {
-              "name": "",
+              "name": "Information Security Policy",
               "content": "",
               "type": "",
-              "version": "1.5",
+              "version": "1.0",
               "status": ""
             },
-            "relevance": 0.9795786145885097,
-            "strength": 0.9672136272355237
+            "relevance": 0.9622314326579228,
+            "strength": 0.9634771273878001
           }
         ],
-        "coverage_score": 0.9474617849785016
+        "coverage_score": 0.9270879766195028
       },
       {
         "requirement": {
@@ -487,17 +512,17 @@
         "mapped_controls": [
           {
             "control": {
-              "name": "",
+              "name": "Information Security Policy",
               "content": "",
               "type": "",
-              "version": "1.5",
+              "version": "1.0",
               "status": ""
             },
-            "relevance": 0.9654101013816707,
-            "strength": 0.9303358138818206
+            "relevance": 0.9530071267090483,
+            "strength": 0.926071233842095
           }
         ],
-        "coverage_score": 0.8981555923986476
+        "coverage_score": 0.8825524856917581
       }
     ],
     "gaps": [],
@@ -509,7 +534,7 @@
   },
   "6 Planning": {
     "section": "6 Planning",
-    "timestamp": "2025-04-17T11:42:03.095380",
+    "timestamp": "2025-04-17T15:16:33.863377",
     "requirements": [
       {
         "section": "6 Planning",
@@ -613,17 +638,17 @@
         "mapped_controls": [
           {
             "control": {
-              "name": "",
+              "name": "Information Security Policy",
               "content": "",
               "type": "",
-              "version": "1.5",
+              "version": "1.0",
               "status": ""
             },
-            "relevance": 0.9748132139173904,
-            "strength": 0.9568248561153619
+            "relevance": 0.9586083463251975,
+            "strength": 0.9494789564627606
           }
         ],
-        "coverage_score": 0.9327255131458606
+        "coverage_score": 0.9101784523253411
       },
       {
         "requirement": {
@@ -645,17 +670,17 @@
         "mapped_controls": [
           {
             "control": {
-              "name": "",
+              "name": "Information Security Policy",
               "content": "",
               "type": "",
-              "version": "1.5",
+              "version": "1.0",
               "status": ""
             },
-            "relevance": 0.9746412460195168,
-            "strength": 0.9585254235275762
+            "relevance": 0.9543928045112506,
+            "strength": 0.9479235097492891
           }
         ],
-        "coverage_score": 0.934218413128302
+        "coverage_score": 0.9046913769317718
       },
       {
         "requirement": {
@@ -677,17 +702,17 @@
         "mapped_controls": [
           {
             "control": {
-              "name": "",
+              "name": "Information Security Policy",
               "content": "",
               "type": "",
-              "version": "1.5",
+              "version": "1.0",
               "status": ""
             },
-            "relevance": 0.9830457617754341,
-            "strength": 0.977363279952588
+            "relevance": 0.967723108677248,
+            "strength": 0.973335515599268
           }
         ],
-        "coverage_score": 0.9607928300723287
+        "coverage_score": 0.9419192709416956
       },
       {
         "requirement": {
@@ -709,17 +734,17 @@
         "mapped_controls": [
           {
             "control": {
-              "name": "",
+              "name": "Information Security Policy",
               "content": "",
               "type": "",
-              "version": "1.5",
+              "version": "1.0",
               "status": ""
             },
-            "relevance": 0.9654101013816707,
-            "strength": 0.9303358138818206
+            "relevance": 0.9530071267090483,
+            "strength": 0.9259962815882805
           }
         ],
-        "coverage_score": 0.8981555923986476
+        "coverage_score": 0.88248105565971
       },
       {
         "requirement": {
@@ -741,17 +766,17 @@
         "mapped_controls": [
           {
             "control": {
-              "name": "",
+              "name": "Information Security Policy",
               "content": "",
               "type": "",
-              "version": "1.5",
+              "version": "1.0",
               "status": ""
             },
-            "relevance": 0.9645814002057004,
-            "strength": 0.9393273823239712
+            "relevance": 0.9520002138220733,
+            "strength": 0.9318649969194747
           }
         ],
-        "coverage_score": 0.9060577216936113
+        "coverage_score": 0.8871356763206456
       }
     ],
     "gaps": [],
@@ -763,7 +788,7 @@
   },
   "7 Support": {
     "section": "7 Support",
-    "timestamp": "2025-04-17T11:42:09.159680",
+    "timestamp": "2025-04-17T15:16:41.542735",
     "requirements": [
       {
         "section": "7 Support",
@@ -867,17 +892,17 @@
         "mapped_controls": [
           {
             "control": {
-              "name": "",
+              "name": "Information Security Policy",
               "content": "",
               "type": "",
-              "version": "1.5",
+              "version": "1.0",
               "status": ""
             },
-            "relevance": 0.9746412460195168,
-            "strength": 0.9585254235275762
+            "relevance": 0.9543928045112506,
+            "strength": 0.9478623371316486
           }
         ],
-        "coverage_score": 0.934218413128302
+        "coverage_score": 0.9046329942256627
       },
       {
         "requirement": {
@@ -899,17 +924,17 @@
         "mapped_controls": [
           {
             "control": {
-              "name": "",
+              "name": "Information Security Policy",
               "content": "",
               "type": "",
-              "version": "1.5",
+              "version": "1.0",
               "status": ""
             },
-            "relevance": 0.9748132139173904,
-            "strength": 0.9568248561153619
+            "relevance": 0.9586083463251975,
+            "strength": 0.9494789564627606
           }
         ],
-        "coverage_score": 0.9327255131458606
+        "coverage_score": 0.9101784523253411
       },
       {
         "requirement": {
@@ -931,17 +956,17 @@
         "mapped_controls": [
           {
             "control": {
-              "name": "",
+              "name": "Information Security Policy",
               "content": "",
               "type": "",
-              "version": "1.5",
+              "version": "1.0",
               "status": ""
             },
-            "relevance": 0.9653524677337404,
-            "strength": 0.9303358138818206
+            "relevance": 0.9530071267090483,
+            "strength": 0.9259962815882805
           }
         ],
-        "coverage_score": 0.8981019737518934
+        "coverage_score": 0.88248105565971
       },
       {
         "requirement": {
@@ -963,17 +988,17 @@
         "mapped_controls": [
           {
             "control": {
-              "name": "",
+              "name": "Information Security Policy",
               "content": "",
               "type": "",
-              "version": "1.5",
+              "version": "1.0",
               "status": ""
             },
-            "relevance": 0.9450770865936188,
-            "strength": 0.8782178301671067
+            "relevance": 0.9085980409854052,
+            "strength": 0.8666643188506886
           }
         ],
-        "coverage_score": 0.8299835483288988
+        "coverage_score": 0.7874495022996862
       },
       {
         "requirement": {
@@ -995,29 +1020,54 @@
         "mapped_controls": [
           {
             "control": {
-              "name": "",
+              "name": "Information Security Policy",
               "content": "",
               "type": "",
-              "version": "1.5",
+              "version": "1.0",
               "status": ""
             },
-            "relevance": 0.9645814002057004,
-            "strength": 0.9393273823239712
+            "relevance": 0.9520002138220733,
+            "strength": 0.9318649969194747
           }
         ],
-        "coverage_score": 0.9060577216936113
+        "coverage_score": 0.8871356763206456
       }
     ],
-    "gaps": [],
+    "gaps": [
+      {
+        "requirement": {
+          "section": "7 Support",
+          "content": "ISO/IEC 27001:2022(E)\nForeword ........................................................................................................................................................................................................................................iv\nIntroduction .................................................................................................................................................................................................................................v\n1  Scope  .................................................................................................................................................................................................................................1\n2  Normative references  .....................................................................................................................................................................................1",
+          "relevance": 0.7994018738920822,
+          "source": {
+            "creationdate": "2022-11-30T09:16:31+01:00",
+            "creator": "PyPDF",
+            "moddate": "2022-11-30T09:16:31+01:00",
+            "page": 2,
+            "page_label": "3",
+            "producer": "TCPDF 6.2.5 (http://www.tcpdf.org)",
+            "source": "ISO_27001_2022_ISMS.pdf",
+            "total_pages": 26,
+            "trapped": "/False"
+          }
+        },
+        "current_coverage": 0.7874495022996862,
+        "gap_description": "ISO/IEC 27001:2022(E)\nForeword ........................................................................................................................................................................................................................................iv\nIntroduction .................................................................................................................................................................................................................................v\n1  Scope  .................................................................................................................................................................................................................................1\n2  Normative references  .....................................................................................................................................................................................1",
+        "suggested_improvements": [
+          "ISO/IEC 27001:2022(E)\nForeword ........................................................................................................................................................................................................................................iv\nIntroduction .................................................................................................................................................................................................................................v\n1  Scope  .................................................................................................................................................................................................................................1\n2  Normative references  .....................................................................................................................................................................................1",
+          "INTERNATIONAL ST ANDARD ISO/IEC 27001:2022(E)\nInformation security, cybersecurity and privacy \nprotection \u2014 Information security management systems \n\u2014 Requirements\n1  Scope\nThis document specifies the requirements for establishing, implementing, maintaining and continually \nimproving an information security management system within th e context of the organization. This \ndocument also includes requirements for the assessment and treatment of information security risks \ntailored to the needs of the organization. The requirements s et out in this document are generic and are \nintended to be applicable to all organizations, regardless o f type, size or nature. Excluding any of the \nrequirements specified in \nClauses \u0376 to 10 is not acceptable when an organization claims conformity to \nthis document.\n2  Normative references\nThe following documents are referred to in the text in such a way that some or all of their content"
+        ]
+      }
+    ],
     "summary": {
       "total_requirements": 5,
       "mapped_requirements": 5,
-      "gaps_identified": 0
+      "gaps_identified": 1
     }
   },
   "8 Operation": {
     "section": "8 Operation",
-    "timestamp": "2025-04-17T11:42:14.895578",
+    "timestamp": "2025-04-17T15:16:53.796523",
     "requirements": [
       {
         "section": "8 Operation",
@@ -1121,17 +1171,17 @@
         "mapped_controls": [
           {
             "control": {
-              "name": "",
+              "name": "Information Security Policy",
               "content": "",
               "type": "",
-              "version": "1.5",
+              "version": "1.0",
               "status": ""
             },
-            "relevance": 0.9748132139173904,
-            "strength": 0.95680182674917
+            "relevance": 0.9586083463251975,
+            "strength": 0.9494789564627606
           }
         ],
-        "coverage_score": 0.9327030638153886
+        "coverage_score": 0.9101784523253411
       },
       {
         "requirement": {
@@ -1153,17 +1203,17 @@
         "mapped_controls": [
           {
             "control": {
-              "name": "",
+              "name": "Information Security Policy",
               "content": "",
               "type": "",
-              "version": "1.5",
+              "version": "1.0",
               "status": ""
             },
-            "relevance": 0.9654101013816707,
-            "strength": 0.9303358138818206
+            "relevance": 0.9530071267090483,
+            "strength": 0.9259962815882805
           }
         ],
-        "coverage_score": 0.8981555923986476
+        "coverage_score": 0.88248105565971
       },
       {
         "requirement": {
@@ -1185,17 +1235,17 @@
         "mapped_controls": [
           {
             "control": {
-              "name": "",
+              "name": "Information Security Policy",
               "content": "",
               "type": "",
-              "version": "1.5",
+              "version": "1.0",
               "status": ""
             },
-            "relevance": 0.9450770865936188,
-            "strength": 0.8782178301671067
+            "relevance": 0.9085980409854052,
+            "strength": 0.8666643188506886
           }
         ],
-        "coverage_score": 0.8299835483288988
+        "coverage_score": 0.7874495022996862
       },
       {
         "requirement": {
@@ -1217,17 +1267,17 @@
         "mapped_controls": [
           {
             "control": {
-              "name": "",
+              "name": "Information Security Policy",
               "content": "",
               "type": "",
-              "version": "1.5",
+              "version": "1.0",
               "status": ""
             },
-            "relevance": 0.9746412460195168,
-            "strength": 0.9585254235275762
+            "relevance": 0.9543928045112506,
+            "strength": 0.9479235097492891
           }
         ],
-        "coverage_score": 0.934218413128302
+        "coverage_score": 0.9046913769317718
       },
       {
         "requirement": {
@@ -1249,29 +1299,54 @@
         "mapped_controls": [
           {
             "control": {
-              "name": "",
+              "name": "Information Security Policy",
               "content": "",
               "type": "",
-              "version": "1.5",
+              "version": "1.0",
               "status": ""
             },
-            "relevance": 0.9645814002057004,
-            "strength": 0.9393273823239712
+            "relevance": 0.9520002138220733,
+            "strength": 0.9318649969194747
           }
         ],
-        "coverage_score": 0.9060577216936113
+        "coverage_score": 0.8871356763206456
       }
     ],
-    "gaps": [],
+    "gaps": [
+      {
+        "requirement": {
+          "section": "8 Operation",
+          "content": "ISO/IEC 27001:2022(E)\nForeword ........................................................................................................................................................................................................................................iv\nIntroduction .................................................................................................................................................................................................................................v\n1  Scope  .................................................................................................................................................................................................................................1\n2  Normative references  .....................................................................................................................................................................................1",
+          "relevance": 0.8116382755474373,
+          "source": {
+            "creationdate": "2022-11-30T09:16:31+01:00",
+            "creator": "PyPDF",
+            "moddate": "2022-11-30T09:16:31+01:00",
+            "page": 2,
+            "page_label": "3",
+            "producer": "TCPDF 6.2.5 (http://www.tcpdf.org)",
+            "source": "ISO_27001_2022_ISMS.pdf",
+            "total_pages": 26,
+            "trapped": "/False"
+          }
+        },
+        "current_coverage": 0.7874495022996862,
+        "gap_description": "ISO/IEC 27001:2022(E)\nForeword ........................................................................................................................................................................................................................................iv\nIntroduction .................................................................................................................................................................................................................................v\n1  Scope  .................................................................................................................................................................................................................................1\n2  Normative references  .....................................................................................................................................................................................1",
+        "suggested_improvements": [
+          "ISO/IEC 27001:2022(E)\nForeword ........................................................................................................................................................................................................................................iv\nIntroduction .................................................................................................................................................................................................................................v\n1  Scope  .................................................................................................................................................................................................................................1\n2  Normative references  .....................................................................................................................................................................................1",
+          "INTERNATIONAL ST ANDARD ISO/IEC 27001:2022(E)\nInformation security, cybersecurity and privacy \nprotection \u2014 Information security management systems \n\u2014 Requirements\n1  Scope\nThis document specifies the requirements for establishing, implementing, maintaining and continually \nimproving an information security management system within th e context of the organization. This \ndocument also includes requirements for the assessment and treatment of information security risks \ntailored to the needs of the organization. The requirements s et out in this document are generic and are \nintended to be applicable to all organizations, regardless o f type, size or nature. Excluding any of the \nrequirements specified in \nClauses \u0376 to 10 is not acceptable when an organization claims conformity to \nthis document.\n2  Normative references\nThe following documents are referred to in the text in such a way that some or all of their content"
+        ]
+      }
+    ],
     "summary": {
       "total_requirements": 5,
       "mapped_requirements": 5,
-      "gaps_identified": 0
+      "gaps_identified": 1
     }
   },
   "9 Performance evaluation": {
     "section": "9 Performance evaluation",
-    "timestamp": "2025-04-17T11:42:20.875652",
+    "timestamp": "2025-04-17T15:17:00.739368",
     "requirements": [
       {
         "section": "9 Performance evaluation",
@@ -1375,17 +1450,17 @@
         "mapped_controls": [
           {
             "control": {
-              "name": "",
+              "name": "Information Security Policy",
               "content": "",
               "type": "",
-              "version": "1.5",
+              "version": "1.0",
               "status": ""
             },
-            "relevance": 0.9748132139173904,
-            "strength": 0.95680182674917
+            "relevance": 0.9586083463251975,
+            "strength": 0.9494789564627606
           }
         ],
-        "coverage_score": 0.9327030638153886
+        "coverage_score": 0.9101784523253411
       },
       {
         "requirement": {
@@ -1407,17 +1482,17 @@
         "mapped_controls": [
           {
             "control": {
-              "name": "",
+              "name": "Information Security Policy",
               "content": "",
               "type": "",
-              "version": "1.5",
+              "version": "1.0",
               "status": ""
             },
-            "relevance": 0.9746412460195168,
-            "strength": 0.9585254235275762
+            "relevance": 0.9543928045112506,
+            "strength": 0.9479235097492891
           }
         ],
-        "coverage_score": 0.934218413128302
+        "coverage_score": 0.9046913769317718
       },
       {
         "requirement": {
@@ -1439,17 +1514,17 @@
         "mapped_controls": [
           {
             "control": {
-              "name": "",
+              "name": "Information Security Policy",
               "content": "",
               "type": "",
-              "version": "1.5",
+              "version": "1.0",
               "status": ""
             },
-            "relevance": 0.9645814002057004,
-            "strength": 0.9393273823239712
+            "relevance": 0.9520002138220733,
+            "strength": 0.9318649969194747
           }
         ],
-        "coverage_score": 0.9060577216936113
+        "coverage_score": 0.8871356763206456
       },
       {
         "requirement": {
@@ -1471,17 +1546,17 @@
         "mapped_controls": [
           {
             "control": {
-              "name": "",
+              "name": "Information Security Policy",
               "content": "",
               "type": "",
-              "version": "1.5",
+              "version": "1.0",
               "status": ""
             },
-            "relevance": 0.9654101013816707,
-            "strength": 0.9303358138818206
+            "relevance": 0.9530071267090483,
+            "strength": 0.9259962815882805
           }
         ],
-        "coverage_score": 0.8981555923986476
+        "coverage_score": 0.88248105565971
       },
       {
         "requirement": {
@@ -1503,17 +1578,17 @@
         "mapped_controls": [
           {
             "control": {
-              "name": "",
+              "name": "Information Security Policy",
               "content": "",
               "type": "",
-              "version": "1.5",
+              "version": "1.0",
               "status": ""
             },
-            "relevance": 0.9800174785463618,
-            "strength": 0.9565610701194514
+            "relevance": 0.9609832525925442,
+            "strength": 0.9487274728589674
           }
         ],
-        "coverage_score": 0.9374465680140743
+        "coverage_score": 0.9117112126919152
       }
     ],
     "gaps": [],
@@ -1525,7 +1600,7 @@
   },
   "10 Improvement": {
     "section": "10 Improvement",
-    "timestamp": "2025-04-17T11:42:27.045684",
+    "timestamp": "2025-04-17T15:17:06.904714",
     "requirements": [
       {
         "section": "10 Improvement",
@@ -1629,17 +1704,17 @@
         "mapped_controls": [
           {
             "control": {
-              "name": "",
+              "name": "Information Security Policy",
               "content": "",
               "type": "",
-              "version": "1.5",
+              "version": "1.0",
               "status": ""
             },
-            "relevance": 0.9748132139173904,
-            "strength": 0.9568248561153619
+            "relevance": 0.9586083463251975,
+            "strength": 0.9494789564627606
           }
         ],
-        "coverage_score": 0.9327255131458606
+        "coverage_score": 0.9101784523253411
       },
       {
         "requirement": {
@@ -1661,17 +1736,17 @@
         "mapped_controls": [
           {
             "control": {
-              "name": "",
+              "name": "Information Security Policy",
               "content": "",
               "type": "",
-              "version": "1.5",
+              "version": "1.0",
               "status": ""
             },
-            "relevance": 0.9800174785463618,
-            "strength": 0.9565610701194514
+            "relevance": 0.9609832525925442,
+            "strength": 0.9487274728589674
           }
         ],
-        "coverage_score": 0.9374465680140743
+        "coverage_score": 0.9117112126919152
       },
       {
         "requirement": {
@@ -1693,17 +1768,17 @@
         "mapped_controls": [
           {
             "control": {
-              "name": "",
+              "name": "Information Security Policy",
               "content": "",
               "type": "",
-              "version": "1.5",
+              "version": "1.0",
               "status": ""
             },
-            "relevance": 0.9654101013816707,
-            "strength": 0.9303358138818206
+            "relevance": 0.9530071267090483,
+            "strength": 0.9259962815882805
           }
         ],
-        "coverage_score": 0.8981555923986476
+        "coverage_score": 0.88248105565971
       },
       {
         "requirement": {
@@ -1725,17 +1800,17 @@
         "mapped_controls": [
           {
             "control": {
-              "name": "",
+              "name": "Information Security Policy",
               "content": "",
               "type": "",
-              "version": "1.5",
+              "version": "1.0",
               "status": ""
             },
-            "relevance": 0.9746412460195168,
-            "strength": 0.9585254235275762
+            "relevance": 0.9543928045112506,
+            "strength": 0.9479235097492891
           }
         ],
-        "coverage_score": 0.934218413128302
+        "coverage_score": 0.9046913769317718
       },
       {
         "requirement": {
@@ -1757,17 +1832,17 @@
         "mapped_controls": [
           {
             "control": {
-              "name": "",
+              "name": "Information Security Policy",
               "content": "",
               "type": "",
-              "version": "1.5",
+              "version": "1.0",
               "status": ""
             },
-            "relevance": 0.9694950887061737,
-            "strength": 0.9519929790619436
+            "relevance": 0.9573120448098058,
+            "strength": 0.9443334700752416
           }
         ],
-        "coverage_score": 0.9229525176833135
+        "coverage_score": 0.9040218052200691
       }
     ],
     "gaps": [],

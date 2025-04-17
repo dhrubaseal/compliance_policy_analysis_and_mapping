@@ -3,22 +3,13 @@ from policy_validator import PolicyValidator
 import json
 from typing import Dict, List
 from datetime import datetime
+import os
 
-def load_existing_controls(file_input) -> List[Dict[str, str]]:
+def load_existing_controls(file_input: str) -> List[Dict[str, str]]:
     """Load existing security controls from the CSV file"""
     validator = PolicyValidator(file_input)
     validator.load_and_validate()
-    
-    controls = []
-    for policy in validator.policies:
-        controls.append({
-            "name": policy.get('Name (This field is mandatory.)', ''),
-            "content": policy.get('Document Content (Mandatory...)', ''),
-            "type": policy.get('Document Type', ''),
-            "version": policy.get('Version (This field is mandatory.)', ''),
-            "status": policy.get('Status (Mandatory...)', '')
-        })
-    return controls
+    return validator.policies
 
 def analyze_section(mapper: ComplianceMapper, section: str, controls: List[Dict[str, str]]) -> Dict[str, any]:
     """Analyze a specific section of ISO 27001:2022"""
@@ -47,12 +38,13 @@ def analyze_section(mapper: ComplianceMapper, section: str, controls: List[Dict[
         }
     }
 
-def main():
+def analyze_policies(input_file: str) -> Dict[str, any]:
+    """Analyze policies against ISO 27001:2022 requirements"""
     # Initialize the compliance mapper
     mapper = ComplianceMapper()
     
     # Load existing security controls from CSV
-    controls = load_existing_controls('security-policies.csv')
+    controls = load_existing_controls(input_file)
     
     # Analyze key sections of ISO 27001:2022
     sections = [
@@ -78,6 +70,7 @@ def main():
     
     # Save the complete analysis
     mapper.save_analysis('compliance_analysis.json', analysis_results)
+    
     print("\nFull analysis has been saved to compliance_analysis.json")
     
     # Print overall statistics
@@ -91,6 +84,21 @@ def main():
     print(f"Successfully Mapped: {total_mapped}")
     print(f"Gaps Identified: {total_gaps}")
     print(f"Coverage Rate: {(total_mapped/total_reqs)*100:.1f}%")
+
+    return analysis_results
+
+def main():
+    import sys
+    if len(sys.argv) > 1:
+        input_file = sys.argv[1]
+    else:
+        input_file = os.path.join('input files', 'security-policies.csv')
+        
+    if not os.path.exists(input_file):
+        print(f"Error: Input file {input_file} not found")
+        sys.exit(1)
+        
+    analyze_policies(input_file)
 
 if __name__ == "__main__":
     main()

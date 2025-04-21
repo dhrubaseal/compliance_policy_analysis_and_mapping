@@ -53,6 +53,26 @@ class ComplianceMapper:
         
         # Initialize sentence transformer lazily
         self.sentence_model = None
+        
+        # Define requirement patterns
+        self.requirement_patterns = {
+            'mandatory': {
+                'indicators': ['shall', 'must', 'required', 'mandatory'],
+                'weight': 1.0
+            },
+            'recommended': {
+                'indicators': ['should', 'recommended', 'may'],
+                'weight': 0.8
+            },
+            'measurement': {
+                'indicators': ['measure', 'assess', 'evaluate', 'monitor'],
+                'weight': 0.7
+            },
+            'validation': {
+                'indicators': ['verify', 'validate', 'test', 'audit'],
+                'weight': 0.7
+            }
+        }
 
     def extract_requirements(self, section: str, threshold: float = MINIMUM_RELEVANCE_SCORE) -> List[Dict[str, any]]:
         """Extract requirements with enhanced context awareness"""
@@ -383,3 +403,119 @@ class ComplianceMapper:
         elif control.get('Document Content') == DocumentContent.USE_URL:
             return control.get('URL', '')
         return ''
+
+    def identify_gaps(self, mappings: List[Dict[str, any]]) -> List[Dict[str, any]]:
+        """Identify gaps in control coverage and generate recommendations"""
+        gaps = []
+        
+        for mapping in mappings:
+            requirement = mapping['requirement']
+            coverage_metrics = mapping.get('coverage_metrics', {})
+            
+            # Check if this requirement has insufficient coverage
+            if (coverage_metrics.get('overall_coverage', 0) < COVERAGE_THRESHOLD or 
+                coverage_metrics.get('effectiveness_coverage', 0) < COVERAGE_THRESHOLD):
+                
+                # Calculate gap priority based on requirement type and coverage
+                priority = self._calculate_gap_priority(requirement, coverage_metrics)
+                
+                # Estimate implementation effort
+                estimated_effort = self._estimate_implementation_effort(requirement)
+                
+                # Generate improvement suggestions
+                suggestions = self._generate_improvement_suggestions(requirement, coverage_metrics)
+                
+                gaps.append({
+                    'requirement': requirement,
+                    'current_coverage': coverage_metrics.get('overall_coverage', 0),
+                    'priority': priority,
+                    'estimated_effort': estimated_effort,
+                    'suggested_improvements': suggestions
+                })
+        
+        # Sort gaps by priority (highest first)
+        gaps.sort(key=lambda x: x['priority'], reverse=True)
+        return gaps
+        
+    def _calculate_gap_priority(self, requirement: Dict[str, any], coverage_metrics: Dict[str, float]) -> float:
+        """Calculate priority score for a gap"""
+        # Base priority on requirement type
+        type_weights = {
+            'mandatory': 1.0,
+            'recommended': 0.8,
+            'measurement': 0.7,
+            'validation': 0.7,
+            'informative': 0.5
+        }
+        
+        base_priority = type_weights.get(requirement['type'], 0.5)
+        
+        # Adjust based on current coverage
+        coverage_factor = 1 - coverage_metrics.get('overall_coverage', 0)
+        
+        # Consider implementation status
+        impl_factor = 1 - coverage_metrics.get('implementation_coverage', 0)
+        
+        # Calculate final priority score
+        priority = (base_priority * 0.4 + coverage_factor * 0.4 + impl_factor * 0.2)
+        
+        return min(1.0, priority)
+        
+    def _estimate_implementation_effort(self, requirement: Dict[str, any]) -> str:
+        """Estimate the effort required to implement a control"""
+        # Count complexity indicators
+        complexity_indicators = {
+            'high': ['develop', 'implement', 'establish', 'maintain', 'monitor'],
+            'medium': ['document', 'define', 'specify', 'review'],
+            'low': ['identify', 'list', 'record', 'report']
+        }
+        
+        content = requirement['content'].lower()
+        scores = {level: sum(1 for ind in indicators if ind in content)
+                 for level, indicators in complexity_indicators.items()}
+        
+        # Consider dependencies
+        if requirement.get('dependencies'):
+            scores['high'] += len(requirement['dependencies'])
+        
+        # Determine effort level
+        if scores['high'] > 0:
+            return 'High'
+        elif scores['medium'] > 0:
+            return 'Medium'
+        else:
+            return 'Low'
+        
+    def _generate_improvement_suggestions(
+        self,
+        requirement: Dict[str, any],
+        coverage_metrics: Dict[str, float]
+    ) -> List[str]:
+        """Generate specific improvement suggestions based on gaps"""
+        suggestions = []
+        
+        # Check overall coverage
+        if coverage_metrics.get('overall_coverage', 0) < COVERAGE_THRESHOLD:
+            suggestions.append(
+                f"Develop a new control that specifically addresses: {requirement['content']}"
+            )
+        
+        # Check effectiveness
+        if coverage_metrics.get('effectiveness_coverage', 0) < COVERAGE_THRESHOLD:
+            suggestions.append(
+                "Enhance existing controls with more specific implementation details"
+            )
+        
+        # Add implementation criteria
+        if requirement.get('implementation_criteria'):
+            suggestions.append(
+                f"Ensure implementation includes: {', '.join(requirement['implementation_criteria'])}"
+            )
+        
+        # Add measurement criteria
+        if requirement.get('measurement_criteria'):
+            suggestions.append(
+                f"Add measurement mechanisms: {', '.join(requirement['measurement_criteria'])}"
+            )
+        
+        return suggestions

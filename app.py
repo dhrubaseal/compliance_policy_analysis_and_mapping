@@ -18,8 +18,34 @@ from config import (
     COVERAGE_THRESHOLD,
     MATURITY_IMPROVEMENT_THRESHOLD,
     DocumentContent,
-    DocumentStatus
+    DocumentStatus,
+    CHROMA_DB_DIR
 )
+
+# After the imports, before the page configuration
+def verify_vector_db():
+    """Verify that the vector database is initialized with ISO 27001:2022 content"""
+    try:
+        # Check if ChromaDB directory exists and has content
+        if not os.path.exists(str(CHROMA_DB_DIR)) or not os.listdir(str(CHROMA_DB_DIR)):
+            st.error("Vector database not initialized. Please run pdf_to_embeddings.py first with your ISO 27001:2022 document.")
+            st.stop()
+            
+        # Verify we can connect to the database
+        mapper = ComplianceMapper()
+        # Try a simple query to verify content
+        results = mapper.db.similarity_search_with_relevance_scores(
+            "What are the main sections of ISO 27001:2022?",
+            k=1
+        )
+        if not results:
+            st.error("Vector database appears to be empty. Please run pdf_to_embeddings.py first with your ISO 27001:2022 document.")
+            st.stop()
+            
+    except Exception as e:
+        st.error(f"Error connecting to vector database: {str(e)}")
+        st.error("Please ensure pdf_to_embeddings.py has been run with your ISO 27001:2022 document.")
+        st.stop()
 
 # Page configuration
 st.set_page_config(
@@ -27,6 +53,8 @@ st.set_page_config(
     page_icon="🔒",
     layout="wide"
 )
+
+verify_vector_db()
 
 # Main title and description
 st.title("ISO 27001:2022 Compliance Analysis & Mapping")

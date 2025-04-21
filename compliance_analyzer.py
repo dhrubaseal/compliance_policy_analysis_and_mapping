@@ -5,6 +5,10 @@ import json
 from typing import Dict, List
 from datetime import datetime
 import os
+from config import (
+    ISO_SECTIONS, 
+    INPUT_FILES_DIR
+)
 
 def load_existing_controls(file_input: str) -> List[Dict[str, str]]:
     """Load existing security controls from various file formats"""
@@ -65,15 +69,7 @@ def analyze_policies(input_file: str) -> Dict[str, any]:
     controls = load_existing_controls(input_file)
     
     # Analyze key sections of ISO 27001:2022
-    sections = [
-        "4 Context of the organization",
-        "5 Leadership",
-        "6 Planning",
-        "7 Support",
-        "8 Operation",
-        "9 Performance evaluation",
-        "10 Improvement"
-    ]
+    sections = ISO_SECTIONS
     
     analysis_results = {}
     for section in sections:
@@ -101,7 +97,19 @@ def analyze_policies(input_file: str) -> Dict[str, any]:
     print(f"Total Requirements: {total_reqs}")
     print(f"Successfully Mapped: {total_mapped}")
     print(f"Gaps Identified: {total_gaps}")
-    print(f"Coverage Rate: {(total_mapped/total_reqs)*100:.1f}%")
+    
+    # Handle case where there are no requirements found
+    if total_reqs == 0:
+        print("No requirements were found in the analysis. This may indicate an issue with:")
+        print("1. The ISO 27001:2022 document processing")
+        print("2. The vector database connection")
+        print("3. The requirement extraction process")
+        print("\nPlease check that:")
+        print("- The ISO_27001_2022_ISMS.pdf file is present and valid")
+        print("- The ChromaDB instance is properly initialized")
+        print("- The OpenAI API key is correctly set")
+    else:
+        print(f"Coverage Rate: {(total_mapped/total_reqs)*100:.1f}%")
 
     return analysis_results
 
@@ -110,7 +118,7 @@ def main():
     if len(sys.argv) > 1:
         input_file = sys.argv[1]
     else:
-        input_file = os.path.join('input files', 'security-policies.csv')
+        input_file = os.path.join(INPUT_FILES_DIR, 'Information Security Policytest.docx')
         
     if not os.path.exists(input_file):
         print(f"Error: Input file {input_file} not found")

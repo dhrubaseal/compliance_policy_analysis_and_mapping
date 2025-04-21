@@ -1,4 +1,7 @@
 import os
+os.environ['TORCH_DISABLE_CUSTOM_CLASS_PATHS'] = '1'
+
+# Standard imports
 import hashlib
 from typing import Dict, List, Optional, Union
 from pathlib import Path
@@ -7,6 +10,20 @@ import json
 import pandas as pd
 from PyPDF2 import PdfReader
 from docx import Document
+import spacy
+from rapidfuzz import fuzz
+
+# Lazy load PyTorch-dependent imports
+sentence_transformer = None
+def get_sentence_transformer():
+    global sentence_transformer
+    if sentence_transformer is None:
+        from sentence_transformers import SentenceTransformer
+        sentence_transformer = SentenceTransformer('all-MiniLM-L6-v2')
+    return sentence_transformer
+
+from sklearn.metrics.pairwise import cosine_similarity
+import numpy as np
 from langchain_community.document_loaders import (
     PyPDFLoader,
     CSVLoader,
@@ -14,18 +31,47 @@ from langchain_community.document_loaders import (
     TextLoader
 )
 from langchain.text_splitter import RecursiveCharacterTextSplitter
+from config import (
+    CACHE_DIR,
+    TEXT_CHUNK_SIZE,
+    TEXT_CHUNK_OVERLAP,
+    SUPPORTED_ENCODINGS
+)
 
 class DocumentProcessor:
-    def __init__(self, cache_dir: str = "./cache"):
+    def __init__(self, cache_dir: str = CACHE_DIR):
         self.cache = Cache(cache_dir)
         self.text_splitter = RecursiveCharacterTextSplitter(
-            chunk_size=1000,
-            chunk_overlap=200,
-            separators=["\n\n", "\n", " ", ""]
+            chunk_size=TEXT_CHUNK_SIZE,
+            chunk_overlap=TEXT_CHUNK_OVERLAP,
+            separators=["\n\n", "\n", ".", " ", ""]
         )
         
+        # Initialize NLP components
+        try:
+            self.nlp = spacy.load("en_core_web_sm")
+        except:
+            os.system("python -m spacy download en_core_web_sm")
+            self.nlp = spacy.load("en_core_web_sm")
+        
+        # Don't initialize sentence transformer immediately
+        self.sentence_model = None
+        
+        # Define requirement indicators
+        self.requirement_indicators = {
+            'mandatory': ['shall', 'must', 'required', 'mandatory'],
+            'recommended': ['should', 'recommended', 'may'],
+            'measurement': ['measure', 'assess', 'evaluate', 'monitor'],
+            'validation': ['verify', 'validate', 'test', 'audit']
+        }
+
+    def _get_sentence_model(self):
+        if self.sentence_model is None:
+            self.sentence_model = get_sentence_transformer()
+        return self.sentence_model
+
     def process_document(self, file_path: Union[str, Path]) -> Dict[str, any]:
-        """Process a document with caching support"""
+        """Process a document with enhanced requirement extraction"""
         file_path = str(file_path)
         file_hash = self._calculate_file_hash(file_path)
         
@@ -50,7 +96,7 @@ class DocumentProcessor:
         return hasher.hexdigest()
     
     def _process_file(self, file_path: str) -> Dict[str, any]:
-        """Process different file types"""
+        """Process different file types with enhanced text analysis"""
         ext = os.path.splitext(file_path)[1].lower()
         
         if ext == '.csv':
@@ -134,6 +180,146 @@ class DocumentProcessor:
             "type": "txt",
             "content": controls
         }
+    
+    def _process_text_content(self, text: str) -> List[Dict[str, any]]:
+        """Process text content with advanced NLP analysis"""
+        doc = self.nlp(text)
+        requirements = []
+        
+        # Split into meaningful chunks
+        chunks = [sent.text.strip() for sent in doc.sents]
+        
+        for chunk in chunks:
+            # Skip empty or very short chunks
+            if len(chunk.split()) < 5:
+                continue
+                
+            # Analyze requirement characteristics
+            req_info = self._analyze_requirement(chunk)
+            
+            if req_info['is_requirement']:
+                requirements.append({
+                    'content': chunk,
+                    'type': req_info['type'],
+                    'confidence': req_info['confidence'],
+                    'indicators': req_info['indicators'],
+                    'entities': req_info['entities'],
+                    'ambiguity_score': req_info['ambiguity_score']
+                })
+        
+        return requirements
+    
+    def _analyze_requirement(self, text: str) -> Dict[str, any]:
+        """Analyze text for requirement characteristics"""
+        doc = self.nlp(text.lower())
+        
+        # Check for requirement indicators
+        indicators = []
+        for category, terms in self.requirement_indicators.items():
+            found_terms = [term for term in terms if term in text.lower()]
+            if found_terms:
+                indicators.append({
+                    'category': category,
+                    'terms': found_terms
+                })
+        
+        # Extract named entities
+        entities = [{
+            'text': ent.text,
+            'label': ent.label_,
+            'start': ent.start_char,
+            'end': ent.end_char
+        } for ent in doc.ents]
+        
+        # Calculate ambiguity score
+        ambiguous_terms = [
+            'appropriate', 'adequate', 'sufficient', 'reasonable',
+            'etc', 'and/or', 'as needed', 'if possible'
+        ]
+        ambiguity_score = sum(1 for term in ambiguous_terms if term in text.lower()) / len(ambiguous_terms)
+        
+        # Determine if text is likely a requirement
+        is_requirement = bool(indicators) or any(self._is_requirement_verb(token) for token in doc)
+        
+        # Calculate confidence score
+        confidence = self._calculate_requirement_confidence(text, indicators, ambiguity_score)
+        
+        # Determine requirement type
+        req_type = self._determine_requirement_type(indicators)
+        
+        return {
+            'is_requirement': is_requirement,
+            'type': req_type,
+            'confidence': confidence,
+            'indicators': indicators,
+            'entities': entities,
+            'ambiguity_score': ambiguity_score
+        }
+    
+    def _is_requirement_verb(self, token) -> bool:
+        """Check if a verb typically indicates a requirement"""
+        requirement_verbs = {
+            'implement', 'establish', 'maintain', 'ensure',
+            'define', 'document', 'review', 'monitor'
+        }
+        return token.pos_ == 'VERB' and token.lemma_.lower() in requirement_verbs
+    
+    def _calculate_requirement_confidence(self, text: str, indicators: List[Dict[str, any]], ambiguity_score: float) -> float:
+        """Calculate confidence score for requirement identification"""
+        scores = []
+        
+        # Score based on requirement indicators
+        if indicators:
+            scores.append(min(1.0, len(indicators) * 0.3))
+        
+        # Score based on sentence structure
+        doc = self.nlp(text)
+        has_subject = any(token.dep_ == 'nsubj' for token in doc)
+        has_verb = any(token.pos_ == 'VERB' for token in doc)
+        has_object = any(token.dep_ in ['dobj', 'pobj'] for token in doc)
+        structure_score = (has_subject + has_verb + has_object) / 3
+        scores.append(structure_score)
+        
+        # Score based on clarity (inverse of ambiguity)
+        clarity_score = 1 - ambiguity_score
+        scores.append(clarity_score)
+        
+        # Calculate weighted average
+        weights = [0.4, 0.3, 0.3]  # Weights for indicators, structure, clarity
+        return sum(score * weight for score, weight in zip(scores, weights))
+    
+    def _determine_requirement_type(self, indicators: List[Dict[str, any]]) -> str:
+        """Determine the type of requirement based on indicators"""
+        if not indicators:
+            return 'implicit'
+            
+        # Count indicator categories
+        category_counts = {}
+        for indicator in indicators:
+            category_counts[indicator['category']] = category_counts.get(indicator['category'], 0) + 1
+        
+        # Determine primary type
+        if category_counts.get('mandatory', 0) > 0:
+            return 'mandatory'
+        elif category_counts.get('recommended', 0) > 0:
+            return 'recommended'
+        elif category_counts.get('measurement', 0) > 0:
+            return 'measurement'
+        elif category_counts.get('validation', 0) > 0:
+            return 'validation'
+        else:
+            return 'informative'
+    
+    def _calculate_semantic_similarity(self, text1: str, text2: str) -> float:
+        """Calculate semantic similarity between two texts"""
+        model = self._get_sentence_model()
+        # Generate embeddings
+        emb1 = model.encode([text1])[0]
+        emb2 = model.encode([text2])[0]
+        
+        # Calculate cosine similarity
+        similarity = cosine_similarity([emb1], [emb2])[0][0]
+        return float(similarity)
     
     def _analyze_page_layout(self, text: str) -> Dict[str, any]:
         """Analyze the layout structure of text"""
